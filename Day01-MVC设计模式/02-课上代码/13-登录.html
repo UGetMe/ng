@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     <script src="./lib/angular.min.js"></script>
+</head>
+<body ng-app="hmApp">
+    <div ng-controller="loginCtrl">
+        用户名:<input type="text" ng-model="uName"><br>
+        密码: <input type="password" ng-model="pwd"><br>
+        <input type="button" value="登录" ng-click="login()">
+    </div>
+    <script>
+        var app = angular.module("hmApp",[]);
+        app.controller("loginCtrl",["$scope",function($scope){
+            $scope.login =function(){
+              console.log("用户名:"+$scope.uName+",密码:"+$scope.pwd);
+              $scope.uName = "";
+              $scope.pwd = "";           
+            }
+        }]);
+    </script>
+</body>
+</html>
