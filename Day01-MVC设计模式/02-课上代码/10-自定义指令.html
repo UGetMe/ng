@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--
+    1. 模块对象提供了一个方法
+       directive. 
+       这个方法就允许我们自定义指令.
+       参数1:  自定义指令的名字 如果指令名称全是小写.那么使用的时候就直接写名字
+                                         驼峰命名 -
+                                         hmTag   hm-tag
+       参数2:  回调函数. ng在解析这个自定义指令的时候就会自动执行这个回调函数中的代码.
+               这个回调函数必须要按照规范返回1个对象.
+               restrict: 指定自定义标签的类型.
+                         ECMA  E:Element
+                               C:Class
+                               M:Mark 注释
+                               A:Att...属性.
+               template: 模板
+               replace: boolean 是否替换原有标签.
+               templateUrl: 将另外1个文件中的内容当成模板.
+               link:函数.
+                    在为每一个标签解析指令的时候,就会执行这个函数中的代码.
+                        
+
+
+    -->
+    <script src="./lib/angular.min.js"></script>
+</head>
+
+<body ng-app="hmApp">
+
+    <div ng-controller="demoCtrl">
+        <div hm-tag="小明" sb="jack">
+             
+        </div>
+         <p hm-tag="小红">
+             
+        </p>
+         <span hm-tag="小强">
+             
+        </span>
+    </div>
+    <script>
+        var app = angular.module("hmApp", []);
+
+        app.directive("hmTag",function(){
+            return {
+                restrict:"EA",
+                template:"<h1>我爱我的祖国</h1>",
+                replace:false,
+                //templateUrl:"./inlcude/top.html"
+                link:function(scope,element,attrs){
+                    //element 指的就是
+                    //console.log(element);
+                    element.on("click",function(){
+                        alert("你好"+attrs["hmTag"]);
+                    });
+                    //console.log(attrs["hmTag"]);
+
+                }
+            };
+        });
+
+        app.controller("demoCtrl", ["$scope", function ($scope) {
+
+        }]);
+    </script>
+</body>
+
+</html>

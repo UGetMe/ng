@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red{
+            color: red;
+        }
+    </style>
+    <script src="./lib/angular.min.js"></script>
+    <!--
+    1. ng-class: 指定的CSS类是否作用在该标签上.
+       值: 是1个对象.
+           {类名:boolean}
+
+    2. ng-include 包含其他的文件.
+       
+    
+    3. ng-disabled 是否禁用表单元素 boolean
+
+    4. ng-readonly
+
+    5. ng-checked
+
+    6. ng-selceted
+
+
+    -->
+
+</head>
+
+<body ng-app="hmApp">
+    <div ng-controller="demoCtrl">
+       <p ng-class="{red:1==1}">我爱我的祖国</p>
+
+       <input type="button" value="点我呀" ng-disabled="false">
+        
+    </div>
+    <script>
+        var app = angular.module("hmApp", []);
+        app.controller("demoCtrl", ["$scope", function ($scope) {
+           
+        }]);
+    </script>
+</body>
+
+</html>

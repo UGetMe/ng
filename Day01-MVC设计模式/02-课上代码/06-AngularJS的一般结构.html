@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./lib/angular.min.js"></script>
+    <!--
+    1. 使用ng-app指定管理范围
+    2. 创建模块
+    3. 创建控制器
+    4. 指定与控制器相互关联的视图
+    5. 控制器制造数据 视图显示数据.
+    -->
+</head>
+
+<body ng-app="hmApp">
+
+    <table ng-controller="demoCtrl">
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+        </tr>
+        <tr ng-repeat="stu in students">
+            <td>{{stu.id}}</td>
+            <td>{{stu.name}}</td>
+            <td>{{stu.gender}}</td>
+            <td>{{stu.age}}</td>
+        </tr>
+    </table>
+
+    <script>
+        var app = angular.module("hmApp", []);
+        app.controller("demoCtrl", ["$scope", function ($scope) {
+            $scope.students = [
+                { id: 1, name: '小明', gender: '男', age: 18 },
+                { id: 2, name: '小花', gender: '女', age: 16 },
+                { id: 3, name: '小强', gender: '男', age: 14 },
+                { id: 4, name: '小东', gender: '男', age: 19 },
+                { id: 5, name: '小常', gender: '女', age: 20 }
+            ];
+        }]);
+    </script>
+</body>
+
+</html>

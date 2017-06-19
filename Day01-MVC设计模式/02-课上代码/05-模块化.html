@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--
+    1. AngularJS是以模块的形式来设计程序的.
+
+
+    2. 使用AngualrJS的步骤
+
+       2.1 引包
+
+       2.2 指定ng管理的范围.
+           使用ng-app指令 指定ng管理的范围.并给这个指令赋值.
+
+       2.3 创建1个模块
+           一旦引入了angularjs的包.
+           它就会暴露1个angular全局对象.
+           这个全局对象有1个方法 module() 用来创建1个模块.
+           第1个参数: 模块名称.
+           第2个参数: 是1个数组,依赖的模块.
+                      如果没有依赖 空数组就可以.
+
+            返回值: 是个模块对象.
+
+      2.4 创建控制器.
+          模块对象提供了1个方法叫做 controller。
+          参数1: 控制器的名称
+          参数2: 是1个数组.
+                 这个数组前面的元素表示是要注入的服务.
+                最后1个元素必须要是1个回调函数.
+
+
+      2.5 指定与控制器相关联的视图.
+          使用ng-controller指令关联.
+
+      2.6 在控制器中制造数据.
+          并将数据存储到$scope对象中.
+
+          $scope对象特殊
+          > 不仅可以在控制器中访问.
+            $scope.xxx = yyy;
+          > 还可以在与控制器相关联的视图中访问.
+            不需要$scope 直接写属性名.,
+
+        在视图中使用{{}}数据绑定符号显示数据.
+
+         
+
+
+
+    -->
+
+    <script src="./lib/angular.min.js"></script>
+</head>
+<body ng-app="hmApp">
+    
+    <div ng-controller="demoCtrl">
+        <h1>{{name}}</h1>
+        <p>{{info}}</p>
+    </div>
+
+    <script>
+        var app =  angular.module("hmApp",[]);
+        app.controller("demoCtrl",["$scope",function($scope){
+            //这是控制器
+            //制造数据模型.
+            //$scope是1个对象.
+            var name = "小明";
+            var info = "我在黑马跟着老王学习前端开发";
+            $scope.name = name;
+            $scope.info = info;
+        }]);
+    
+    </script>
+</body>
+</html>

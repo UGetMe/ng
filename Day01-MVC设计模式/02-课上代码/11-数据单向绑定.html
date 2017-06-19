@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--
+    1. 在控制器中制造数据,把数据模型往$scope对象中存储.
+
+    2. 在视图中,使用{{}}将$scope对象中的数据显示.
+
+    这个过程就叫做数据的单向绑定.
+
+    3. ng-bind指令.
+       {{}}数据绑定符号其实就是ng-bind的简写形式.
+       大多数情况下,使用{{}}绑定数据是很方便的.
+
+    4. 闪烁问题.
+       当使用{{}}绑定数据的时候,并且angular是放在视图后面引入的.
+       就会出现闪烁的问题.
+
+       解决方案: 就是为标签加1个ng-cloak
+       原理: 使用css代码先将标签隐藏.等有了数据再将其显示.
+      
+      
+    
+
+    -->
+    <style>
+        @charset "UTF-8";
+        [ng\:cloak],
+        [ng-cloak],
+        [data-ng-cloak],
+        [x-ng-cloak],
+        .ng-cloak,
+        .x-ng-cloak,
+        .ng-hide:not(.ng-hide-animate) {
+            display: none !important;
+        }
+
+        ng\:form {
+            display: block;
+        }
+
+        .ng-animate-shim {
+            visibility: hidden;
+        }
+
+        .ng-anchor {
+            position: absolute;
+        }
+    </style>
+    <script src="./lib/angular.min.js"></script>
+</head>
+
+<body ng-app="hmApp">
+    <div ng-controller="demoCtrl">
+        <h1 ng-cloak>{{name}}</h1>
+        <p ng-cloak>{{msg}}</p>
+
+    </div>
+
+    <script>
+        var app = angular.module("hmApp", []);
+
+        app.controller("demoCtrl", ["$scope", function ($scope) {
+            $scope.name = "jack";
+            $scope.msg = "you jump i jump!";
+            $scope.student = {
+                name: "小强",
+                age: 18
+            };
+        }]);
+    </script>
+</body>
+
+</html>

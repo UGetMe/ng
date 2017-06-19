@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!--
+    1. 自定义指令是ng的重要特性之一.
+       原生html标签 属性功能非常的单一.
+       AngularJS扩展了html标签和属性.
+
+       指令:其实就是1个html标签或者标签属性.
+       AngularJS的内置指令都是以 ng-开头.
+
+
+    2. ng-app 指定ng管理的范围.ng的入口.
+
+    3. ng-controller 指定与控制器相互关联的视图.
+
+    4. ng-show 用来指定该元素是否显示.boolean类型.
+       给1个变量.在控制器中控制变量的值.
+                true:显示
+                false:不显示.
+
+    5. ng-hide 用来指定该元素是否显示.boolean类型.
+               true:不显示
+               false:显示
+       无论是ng-show还是ng-hide 元素都是创建出来的.
+
+    6. ng-if 用来控制该标签是否创建在DOM树上. boolean
+
+
+
+    -->
+    <script src="./lib/angular.min.js"></script>
+</head>
+
+<body ng-app="hmApp">
+
+   
+
+    <div ng-if="false">
+        哈哈哈,我又来了.....
+    </div>
+
+
+    <div ng-controller="demoCtrl">
+        <div ng-show="flag">
+            我来了,你们走开!!!!
+        </div>
+         <img src="./images/guanguan.jpg" alt="">
+    </div>
+
+    <script>
+        var app = angular.module("hmApp", []);
+        app.controller("demoCtrl", ["$scope", function ($scope) {
+            $scope.flag = false;
+        }]);
+    </script>
+</body>
+
+</html>
